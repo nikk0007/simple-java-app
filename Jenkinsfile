@@ -13,16 +13,19 @@ pipeline {
         }
         stage('Test') {
             steps {
+                sh echo 'Test Stage'
                 sh 'mvn test'
             }
             post {
                 always {
+                    sh echo 'posttt'
                     junit 'target/surefire-reports/*.xml'
                 }
             }
         }
         stage('Deliver') {
             steps {
+                sh 'echo Stage Deliver'
                 sh './jenkins/scripts/deliver.sh'
             }
         }
