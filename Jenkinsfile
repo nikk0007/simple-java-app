@@ -8,8 +8,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                println 'echo build'
-                sh 'mvn -B -DskipTests clean package'
+                script {
+          def testOutput = sh(returnStdout: true, script: 'mvn test')
+          echo "Test output:\n${testOutput}"
+        }
             }
         }
     }
