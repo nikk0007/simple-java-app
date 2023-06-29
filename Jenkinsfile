@@ -26,7 +26,7 @@ pipeline {
         }
         post {
                 always {
-                    echo "posttt"
+                    echo 'posttt'
                     junit 'target/surefire-reports/*.xml'
                 }
             }
