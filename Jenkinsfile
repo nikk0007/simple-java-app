@@ -16,12 +16,6 @@ pipeline {
                 sh echo 'Test Stage'
                 sh 'mvn test'
             }
-            post {
-                always {
-                    sh echo 'posttt'
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
         }
         stage('Deliver') {
             steps {
@@ -29,5 +23,11 @@ pipeline {
                 sh './scripts/deliver.sh'
             }
         }
+        post {
+                always {
+                    sh echo 'posttt'
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
     }
 }
