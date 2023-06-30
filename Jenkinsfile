@@ -32,12 +32,27 @@ pipeline {
             }
         }
      post {
-                always {
-                    echo 'posttt'
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
-
+        always {
+            // Cleanup steps or actions that should be performed regardless of the stage outcomes
+            
+            // For example, cleaning up temporary files
+            //sh 'rm -rf target'
+            echo 'ALWAYS'
+        }
+        
+        success {
+            // Actions to be performed only if the pipeline succeeds
+            
+            // For example, sending a notification
+            echo 'Pipeline succeeded! Sending notifications...'
+        }
+    failure {
+            // Actions to be performed only if the pipeline fails
+            
+            // For example, sending an email or Slack notification
+            echo 'Pipeline failed! Sending failure notifications...'
+        }
+    }
         
     }
 }
