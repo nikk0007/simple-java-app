@@ -31,12 +31,7 @@ pipeline {
                 sh './scripts/deliver.sh'
             }
         }
-        post {
-                always {
-                    echo 'posttt'
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
+     
 
         
     }
