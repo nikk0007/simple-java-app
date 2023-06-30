@@ -24,5 +24,20 @@ pipeline {
                 echo 'DEPLOY STAGE'
             }
         }
+
+        stage('Deliver') {
+            steps {
+                sh 'echo "Stage Deliver"'
+                sh './scripts/deliver.sh'
+            }
+        }
+        post {
+                always {
+                    echo 'posttt'
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+
+        
     }
 }
