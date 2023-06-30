@@ -31,6 +31,8 @@ pipeline {
                 sh 'sh scripts/deliver.sh'
             }
         }
+          
+    }
      post {
         always {
             // Cleanup steps or actions that should be performed regardless of the stage outcomes
@@ -52,7 +54,5 @@ pipeline {
             // For example, sending an email or Slack notification
             echo 'Pipeline failed! Sending failure notifications...'
         }
-    }
-        
     }
 }
